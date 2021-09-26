@@ -1,5 +1,7 @@
 """
+Why spend 6 minutes doing something when you can spend 6 hours failing to automate it?
 
+Automatically updates readme and static webpage with updated fragmenty.json.
 """
 import json
 
