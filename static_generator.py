@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     # generate html
     html = HTML
-    md = md.replace('[online demo](https://nesati.github.io/)', '')
+    md = md.replace('[online demo](https://nesati.github.io/moonstone)', '')
     html += markdown.markdown(md)
     html += "</body></html>"
 
