@@ -51,16 +51,16 @@ if __name__ == '__main__':
     md = md_left + instructions + table + md_right
 
     # generate example
-    example = [data['start']]
+    example = data['start']
 
-    for _ in range(10):
+    for i in range(10):
         for idx, options in enumerate(data['fragments']):
-            if len(example) == 1 and idx == 0:  # skip first fragment in first sentence because it is handled by START
+            if i == 0 and idx == 0:  # skip first fragment in first sentence because it is handled by START
                 continue
             if not (idx in data['optional'] and random.random() > 0.1):  # sometimes (90%) skip optional things
-                example.append(random.choice(options))
+                example += random.choice(options)
 
-    example = ''.join(example) + data['end']
+    example += data['end']
 
     # add no js example
     md_left = md.split('<div id="script">')[0] + '<div id="script">\n'
