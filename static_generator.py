@@ -4,6 +4,7 @@
 import json
 
 import markdown
+import random
 from itertools import zip_longest
 
 HTML = """
@@ -27,7 +28,8 @@ if __name__ == '__main__':
     # generate table
     data = json.load(open("data/fragmenty.json", encoding='UTF-8'))
     table = "<table>\n"
-    table += '<tr><td>' + '</td><td>'.join(["<i><b>lze vynechat</b></i>" if idx in data['optional'] else "" for idx in range(len(data['fragments']))]) + '</td></tr>\n'
+    table += '<tr><td>' + '</td><td>'.join(["<i><b>lze vynechat</b></i>" if idx in data['optional'] else "" for idx in
+                                            range(len(data['fragments']))]) + '</td></tr>\n'
     for row in zip_longest(*data['fragments'], fillvalue=''):
         table += '<tr><td>' + '</td><td>'.join(row) + '</td></tr>\n'
     table += "</table>"
@@ -41,6 +43,23 @@ if __name__ == '__main__':
     md_left = md.split("## Jak to funguje?")[0] + "## Jak to funguje?\n"
     md_right = '\n\n## Inspirace' + md.split("## Inspirace")[1]
     md = md_left + instructions + table + md_right
+
+    # generate example
+    example = [data['start']]
+
+    for _ in range(10):
+        for idx, options in enumerate(data['fragments']):
+            if len(example) == 1 and idx == 0:  # skip first fragment in first sentence because it is handled by START
+                continue
+            if not (idx in data['optional'] and random.random() > 0.1):  # sometimes (90%) skip optional things
+                example.append(random.choice(options))
+
+    example = ''.join(example) + data['end']
+
+    # add no js example
+    md_left = md.split("<noscript>")[0] + "<noscript>\n"
+    md_right = '\n</noscript>' + md.split("</noscript>")[1]
+    md = md_left + example + md_right
 
     with open("README.md", 'w', encoding='UTF-8') as f:
         f.write(md)
