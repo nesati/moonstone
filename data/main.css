@@ -1,0 +1,19 @@
+table{
+    border: #000 solid 2px;
+    border-collapse: collapse;
+}
+td {
+    border: #000 solid 1px;
+}
+tr:nth-child(1) {
+    border-bottom: #000 solid 2px;
+}
+ul {
+    list-style: none;
+}
+h1, h2 {
+    font-family: sans-serif;
+}
+#text {
+    text-align: justify;
+}
