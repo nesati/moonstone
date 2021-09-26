@@ -2,7 +2,7 @@
 
 ## Příklad
 
-[online demo](https://nesati.github.io/)
+[online demo](https://nesati.github.io/moonstone)
 
 <div id="script">
 <div id="text">
