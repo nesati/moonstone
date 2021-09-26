@@ -63,8 +63,8 @@ if __name__ == '__main__':
 
     # add no js example
     md_left = md.split('<div id="script">')[0] + '<div id="script">\n'
-    md_right = '\n</div>' + md.split('</div>')[2]
-    md = md_left + '<div id="text">\n' + example + '\n</div>\n' + md_right
+    md_right = md.split('</div>')[2]
+    md = md_left + '<div id="text"></div>\n</div>\n\n>' + example + md_right
 
     with open("README.md", 'w', encoding='UTF-8') as f:
         f.write(md)

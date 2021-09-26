@@ -6,7 +6,7 @@ const HTML = `
 <div id="text"></div>
 `
 window.addEventListener('load', e => {
-    document.getElementById('script').innerHTML = HTML
+    document.getElementsByTagName('blockquote')[0].innerHTML = HTML
 })
 
 let data = null
