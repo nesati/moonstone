@@ -26,6 +26,10 @@ INSTRUCTIONS = "Začněte přečtením fráze *začátek* a přeskočením prvn�
                "přicemž navazující úryvky vět z jednotlivých sloupců můžete mezi sebou libovolně kombinovat a některé" \
                " sloupce lze vynechat. Až bude esej dostatečně dlouhá, ukončete ji frází *konec*. \n\n "
 
+NOSCRIPT = """
+<noscript>Automatický generátor funguje jen s funkčním JavaScriptem.</noscript>
+"""
+
 if __name__ == '__main__':
     # generate table
     data = json.load(open("data/fragments.json", encoding='UTF-8'))
@@ -59,9 +63,9 @@ if __name__ == '__main__':
     example = ''.join(example) + data['end']
 
     # add no js example
-    md_left = md.split("<noscript>")[0] + "<noscript>\n"
-    md_right = '\n</noscript>' + md.split("</noscript>")[1]
-    md = md_left + example + md_right
+    md_left = md.split('<div id="script">')[0] + '<div id="script">\n'
+    md_right = '\n</div>' + md.split('</div>')[2]
+    md = md_left + NOSCRIPT + '<div id="text">\n' + example + '\n</div>\n' + md_right
 
     with open("README.md", 'w', encoding='UTF-8') as f:
         f.write(md)

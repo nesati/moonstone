@@ -4,6 +4,11 @@
 
 [online demo](https://nesati.github.io/)
 
+<div id="script">
+<div id="text">
+</div>
+</div>
+
 ## Jak to funguje?
 ## Inspirace
 - [Generátor univerzálních projevů](http://www.kyblsoft.cz/projevy)
