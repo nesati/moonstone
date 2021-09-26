@@ -1,7 +1,7 @@
 """
 Why spend 6 minutes doing something when you can spend 6 hours failing to automate it?
 
-Automatically updates readme and static webpage with updated fragmenty.json.
+Automatically updates readme and static webpage with updated fragments.json.
 """
 import json
 
@@ -28,7 +28,7 @@ INSTRUCTIONS = "Začněte přečtením fráze *začátek* a přeskočením prvn�
 
 if __name__ == '__main__':
     # generate table
-    data = json.load(open("data/fragmenty.json", encoding='UTF-8'))
+    data = json.load(open("data/fragments.json", encoding='UTF-8'))
     table = "<table>\n"
     table += '<tr><td>' + '</td><td>'.join(["<i><b>lze vynechat</b></i>" if idx in data['optional'] else "" for idx in
                                             range(len(data['fragments']))]) + '</td></tr>\n'
