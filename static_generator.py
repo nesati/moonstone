@@ -17,6 +17,7 @@ HTML = """
     <title>Generátor univerzálních esejí</title>
     <script src='data/generator.js'></script>
     <link rel='stylesheet' href='data/main.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset='UTF-8'>
 </head>
 <body>
